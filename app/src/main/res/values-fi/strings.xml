@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Viivakoodi lukija</string>
+    <string name="btn_retry">Yritä uudelleen</string>
+    <string name="btnScan">Skannaa</string>
+    <string name="btnReset">Nollaa</string>
+    <string name="copied">Kopioitu leikepöydälle.</string>
+</resources>

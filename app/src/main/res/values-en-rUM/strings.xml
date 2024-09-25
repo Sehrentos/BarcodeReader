@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Barcode reader</string>
+    <string name="btn_retry">Retry</string>
+    <string name="btnScan">Scan</string>
+    <string name="btnReset">Reset</string>
+    <string name="copied">Copied to clipboard.</string>
+</resources>

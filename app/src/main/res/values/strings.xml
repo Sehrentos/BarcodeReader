@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Barcode reader</string>
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum...</string>
+    <string name="btn_retry">Retry</string>
+    <string name="btnScan">Scan</string>
+    <string name="btnReset">Reset</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="copied">Copied to clipboard.</string>
+</resources>
