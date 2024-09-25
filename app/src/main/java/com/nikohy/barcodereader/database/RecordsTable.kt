@@ -1,10 +1,9 @@
 package com.nikohy.barcodereader.database
 
-import android.provider.BaseColumns
+//import android.provider.BaseColumns
 import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -34,11 +33,11 @@ class RecordsTable(val db: JsonDB) : DefaultLifecycleObserver {
      *
      * Sample: val record = records.add("MyTest", Json.encodeToString(MyTest("abc")))
      */
-    fun add(name: String, json: String, lifetime: LIFETIME = LIFETIME.INFINITE): Record {
-        return Record(className = name, content = json, lifetime = lifetime).apply {
-            insert(db.writableDatabase)
-        }
-    }
+//    fun add(name: String, json: String, lifetime: LIFETIME = LIFETIME.INFINITE): Record {
+//        return Record(className = name, content = json, lifetime = lifetime).apply {
+//            insert(db.writableDatabase)
+//        }
+//    }
 
     /**
      * get record by ID
@@ -47,23 +46,23 @@ class RecordsTable(val db: JsonDB) : DefaultLifecycleObserver {
      *
      * sample: val record = records.getById("1")
      */
-    fun getById(id: String): Record? {
-        val query = "select * from ${RecordsContract.TABLE_NAME} where ${BaseColumns._ID}=? limit 1"
-
-        db.readableDatabase.rawQuery(query, arrayOf(id)).use { cursor ->
-            if (cursor.moveToFirst()) {
-                val res = Record(
-                    cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CLASS_NAME)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CONTENT)),
-                    LIFETIME.fromInt(cursor.getInt(cursor.getColumnIndexOrThrow(RecordsContract.Columns.LIFETIME)))
-                )
-                cursor.close()
-                return res
-            }
-        }
-        return null
-    }
+//    fun getById(id: String): Record? {
+//        val query = "select * from ${RecordsContract.TABLE_NAME} where ${BaseColumns._ID}=? limit 1"
+//
+//        db.readableDatabase.rawQuery(query, arrayOf(id)).use { cursor ->
+//            if (cursor.moveToFirst()) {
+//                val res = Record(
+//                    cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID)),
+//                    cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CLASS_NAME)),
+//                    cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CONTENT)),
+//                    LIFETIME.fromInt(cursor.getInt(cursor.getColumnIndexOrThrow(RecordsContract.Columns.LIFETIME)))
+//                )
+//                cursor.close()
+//                return res
+//            }
+//        }
+//        return null
+//    }
 
     /**
      * get record by ID and return specified class
@@ -72,18 +71,18 @@ class RecordsTable(val db: JsonDB) : DefaultLifecycleObserver {
      *
      * sample: val myTest = records.getById<MyTest>("123")
      */
-    inline fun <reified T> getById(id: String): T? {
-        val query = "select * from ${RecordsContract.TABLE_NAME} where ${BaseColumns._ID}=? limit 1"
-
-        db.readableDatabase.rawQuery(query, arrayOf(id)).use { cursor ->
-            if (cursor.moveToFirst()) {
-                val content = cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CONTENT))
-                cursor.close()
-                return Json.decodeFromString<T>(content)
-            }
-        }
-        return null
-    }
+//    inline fun <reified T> getById(id: String): T? {
+//        val query = "select * from ${RecordsContract.TABLE_NAME} where ${BaseColumns._ID}=? limit 1"
+//
+//        db.readableDatabase.rawQuery(query, arrayOf(id)).use { cursor ->
+//            if (cursor.moveToFirst()) {
+//                val content = cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CONTENT))
+//                cursor.close()
+//                return Json.decodeFromString<T>(content)
+//            }
+//        }
+//        return null
+//    }
 
     /**
      * get list of records by class name
@@ -92,35 +91,35 @@ class RecordsTable(val db: JsonDB) : DefaultLifecycleObserver {
      *
      * sample: val myTestList = records.getByName("MyTest")
      */
-    fun getByName(name: String): List<Record> {
-        val query = "select * from ${RecordsContract.TABLE_NAME} where ${RecordsContract.Columns.CLASS_NAME}=?"
-        val list = mutableListOf<Record>()
-
-        db.readableDatabase.rawQuery(query, arrayOf(name)).use { cursor ->
-            // get & append first position value
-            if (cursor.moveToFirst()) {
-                list.add(
-                    Record(
-                        cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CLASS_NAME)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CONTENT))
-                    )
-                )
-            }
-            // get & append next position values
-            while (cursor.moveToNext()) {
-                list.add(
-                    Record(
-                        cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CLASS_NAME)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CONTENT))
-                    )
-                )
-            }
-            cursor.close()
-        }
-        return list
-    }
+//    fun getByName(name: String): List<Record> {
+//        val query = "select * from ${RecordsContract.TABLE_NAME} where ${RecordsContract.Columns.CLASS_NAME}=?"
+//        val list = mutableListOf<Record>()
+//
+//        db.readableDatabase.rawQuery(query, arrayOf(name)).use { cursor ->
+//            // get & append first position value
+//            if (cursor.moveToFirst()) {
+//                list.add(
+//                    Record(
+//                        cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID)),
+//                        cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CLASS_NAME)),
+//                        cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CONTENT))
+//                    )
+//                )
+//            }
+//            // get & append next position values
+//            while (cursor.moveToNext()) {
+//                list.add(
+//                    Record(
+//                        cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID)),
+//                        cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CLASS_NAME)),
+//                        cursor.getString(cursor.getColumnIndexOrThrow(RecordsContract.Columns.CONTENT))
+//                    )
+//                )
+//            }
+//            cursor.close()
+//        }
+//        return list
+//    }
 
     /**
      * get list of records by class type
@@ -153,24 +152,24 @@ class RecordsTable(val db: JsonDB) : DefaultLifecycleObserver {
     /**
      * Delete record by ID
      */
-    fun delById(id: String): Boolean {
-        db.writableDatabase.apply {
-            execSQL("DELETE FROM ${RecordsContract.TABLE_NAME} where ${BaseColumns._ID} = '$id'")
-            execSQL("VACUUM")
-        }
-        return true
-    }
+//    fun delById(id: String): Boolean {
+//        db.writableDatabase.apply {
+//            execSQL("DELETE FROM ${RecordsContract.TABLE_NAME} where ${BaseColumns._ID} = '$id'")
+//            execSQL("VACUUM")
+//        }
+//        return true
+//    }
 
     /**
      * Delete records by className
      */
-    fun delByName(name: String): Boolean {
-        db.writableDatabase.apply {
-            execSQL("DELETE FROM ${RecordsContract.TABLE_NAME} where ${RecordsContract.Columns.CLASS_NAME} = '$name'")
-            execSQL("VACUUM")
-        }
-        return true
-    }
+//    fun delByName(name: String): Boolean {
+//        db.writableDatabase.apply {
+//            execSQL("DELETE FROM ${RecordsContract.TABLE_NAME} where ${RecordsContract.Columns.CLASS_NAME} = '$name'")
+//            execSQL("VACUUM")
+//        }
+//        return true
+//    }
 
     /**
      * Delete records by class

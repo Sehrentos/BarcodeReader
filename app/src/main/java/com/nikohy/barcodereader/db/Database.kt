@@ -95,22 +95,22 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     // method to get data
-    fun getRecord(query: String, vararg columns: String): Map<String, String> {
-        val db = this.writableDatabase
-        val retVal = mutableMapOf<String, String>()
-
-        db.rawQuery(query, null).use { cursor ->
-            if (cursor.moveToPosition(0)) {
-                for (column in columns) {
-                    cursor.getString(
-                        cursor.getColumnIndex(column)
-                    )?.let { retVal[column] = it }
-                }
-            }
-        }
-
-        return retVal
-    }
+//    fun getRecord(query: String, vararg columns: String): Map<String, String> {
+//        val db = this.writableDatabase
+//        val retVal = mutableMapOf<String, String>()
+//
+//        db.rawQuery(query, null).use { cursor ->
+//            if (cursor.moveToPosition(0)) {
+//                for (column in columns) {
+//                    cursor.getString(
+//                        cursor.getColumnIndex(column)
+//                    )?.let { retVal[column] = it }
+//                }
+//            }
+//        }
+//
+//        return retVal
+//    }
 
     // method to close connection
     fun closeDatabase() {

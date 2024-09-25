@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.nikohy.barcodereader.database.JsonDB
 import com.nikohy.barcodereader.database.LIFETIME
 import com.nikohy.barcodereader.database.RecordsTable
-import com.google.mlkit.vision.barcode.common.Barcode
+//import com.google.mlkit.vision.barcode.common.Barcode
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
