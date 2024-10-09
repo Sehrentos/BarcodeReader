@@ -98,15 +98,4 @@ class ScannerDataViewModel(
 
     @Serializable
     data class Barcode(val format: Int = -1, val rawValue: String = "") {}
-
-//    // tests below, pass any data
-//    private var data: Any? = null
-//
-//    fun set(value: Any) {
-//        data = value
-//    }
-//
-//    fun get(): Any? {
-//        return data
-//    }
 }

@@ -64,9 +64,6 @@ class CodeAnalyzer(
             }
     }
 
-    // version androidx.camera:camera-core:1.2.2
-    // fix issue with an error:
-    // java.lang.AbstractMethodError: abstract method "android.util.Size androidx.camera.core.ImageAnalysis$Analyzer.getDefaultTargetResolution()"
     override fun getDefaultTargetResolution(): Size {
         return Size(640, 480) // Change this to the desired target resolution
     }

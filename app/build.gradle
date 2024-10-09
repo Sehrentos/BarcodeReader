@@ -83,7 +83,7 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
     // for fragment-ktx eg. setFragmentResultListener
-    implementation "androidx.fragment:fragment-ktx:1.8.3"
+    //implementation "androidx.fragment:fragment-ktx:1.8.3"
 
     // JSON serialization
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3"

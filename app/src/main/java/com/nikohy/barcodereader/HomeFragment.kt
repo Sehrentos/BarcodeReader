@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
 //        scannerDataViewModel.barcodes.value = records.getByClass<ScannerDataViewModel.Barcode>().toMutableList().reversed() // get initial values
         // endregion
 
-        // region TODO
+        // region TODO some future version perhaps?
 //        // Use the Kotlin extension in the fragment-ktx artifact
 //        // listen any for any child fragment request post with given request key
 //        setFragmentResultListener("requestBarcodeKey") { requestKey, bundle ->
@@ -88,13 +88,6 @@ class HomeFragment : Fragment() {
             Log.d(javaClass.simpleName, "UPDATE barcodes list ${barcodes.size}")
         }
 
-//        // set handler to trigger when scan collection change
-//        // TODO old probably removed
-//        scannerDataViewModel.setOnBarcodeResultUpdateListener { index, barcode ->
-//            adapterScanned.notifyItemChanged(index)
-//            Log.d(javaClass.simpleName, "UPDATE barcode list $index / $barcode")
-//        }
-
         // Begin scan and navigate to ScannerFragment
         btnScan.setOnClickListener {
             findNavController().navigate(
@@ -111,36 +104,5 @@ class HomeFragment : Fragment() {
             adapterScanned.notifyItemRangeRemoved(0, itemCount)
         }
 
-//        // database query sample
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                //val record = records.add("test", "{a:123}", LIFETIME.ON_STOP) // raw value
-//                val record = records.add(MyTest("abcdefg"), LIFETIME.ON_STOP)
-//                // same as above
-//                //val record = Record(className = "test", content = "{a:1}", lifetime = LIFETIME.ON_DESTROY) // Eg. table helper
-//                //record.insert(db.writableDatabase)
-//                Log.d("HomeFragment", "created db record: ${record.id} ${record.className}")
-//
-//                val data = records.getById<MyTest>(record.id.toString())
-//                Log.d("HomeFragment", "getById result: $data")
-//
-//                val dataList = records.getByClass<MyTest>()
-//                Log.d("HomeFragment", "getByClass result: $dataList")
-//            } catch (ex: Exception) {
-//                Log.e("HomeFragment", "JsonDB failure: ${ex.message}")
-//            }
-//        }
     }
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//
-//        // close open db connection
-//        if (::db.isInitialized) {
-//            db.close()
-//        }
-//    }
 }
-
-//@Serializable
-//data class MyTest(var a: String) {}

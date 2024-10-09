@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Size
 import android.view.*
-import android.widget.TextView
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -277,6 +276,7 @@ class ScannerFragment : Fragment() {
         return selfPermission == PackageManager.PERMISSION_GRANTED
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult( // onRequestPermissionsResult
         requestCode: Int,
         permissions: Array<String>,

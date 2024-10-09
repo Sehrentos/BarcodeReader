@@ -70,44 +70,6 @@ class MainActivity : AppCompatActivity(), ActivityCompat.OnRequestPermissionsRes
             )
         )
 
-//        // database V1 sample
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                // open db connection
-//                val db = Database(applicationContext)
-//
-//                // read records
-//                val records = db.getRecord("SELECT * FROM ${MyTableContract.TABLE_NAME}", MyTableContract.Columns.DESCRIPTION)
-//                records.forEach { record ->
-//                    Log.d(TAG, "db record, $record")
-//                }
-//
-//                if (records.isEmpty()) {
-//                    // Create a new map of values, where column names are the keys
-//                    val values = ContentValues().apply {
-//                        put(MyTableContract.Columns.WORKSHIFT_ID, "123")
-//                        put(MyTableContract.Columns.WORKSHIFT_KEY, "[678678678]")
-//                        put(MyTableContract.Columns.DATASET_ID, "")
-//                        put(MyTableContract.Columns.NAME, "sample name")
-//                        put(MyTableContract.Columns.DESCRIPTION, "sample description")
-//                        put(MyTableContract.Columns.INSTRUCTIONS, "sample instructions")
-//                        put(MyTableContract.Columns.START_TIME, "10:00:00")
-//                        put(MyTableContract.Columns.END_TIME, "18:00:00")
-//                        put(MyTableContract.Columns.SERIALIZED_SHIFT, "")
-//                    }
-//                    // write records
-//                    db.addRecord(MyTableContract.TABLE_NAME, values)
-//                    Log.d(TAG, "db added, $values")
-//                }
-//
-//                // close db connection
-//                db.closeDatabase()
-//
-//            } catch (ex: Exception) {
-//                Log.e(TAG, "DB error $ex")
-//            }
-//        }
-
     }
 
     /** When key down event is triggered, relay it via local broadcast so any fragments can handle it */
